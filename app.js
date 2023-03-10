@@ -1,21 +1,29 @@
-let hour = window.prompt('Enter the hour ')
-let min = window.prompt('Enter the minute ')
-let sec = window.prompt('Enter the second')
+const list = document.querySelector('ul')
+const input = document.querySelector('input')
+const form = document.querySelector('form')
 
-const currentDate = () => {
-  const time = new Date()
-  let hours = time.getHours()
-  let minutes = time.getMinutes()
-  let seconds = time.getSeconds()
-  document.querySelector('.currentTime').textContent =
-    hours + ':' + minutes + ':' + ':' + seconds
-  document.querySelector('.alarmTime').textContent =
-    hour + ':' + min + ':' + sec
-  if (hour == hours && min == minutes && sec == seconds) {
-    document.querySelector('.alarm').textContent = 'Time is over'
+form.addEventListener('submit', (e) => {
+  e.preventDefault()
+  displayList()
+  input.value = ''
+})
+
+const displayList = () => {
+  inputValue = input.value
+  if (inputValue === '') {
+    return
+  } else {
+    const itemLi = document.createElement('li')
+    itemLi.textContent = inputValue
+    const deletebtn = document.createElement('button')
+    deletebtn.textContent = 'X'
+    itemLi.append(' ', deletebtn)
+    list.append(itemLi)
   }
-
-  setTimeout(currentDate, 1000)
 }
 
-currentDate()
+list.addEventListener('click', (e) => {
+  if (e.target.nodeName === 'BUTTON') {
+    e.target.closest('LI').remove()
+  }
+})

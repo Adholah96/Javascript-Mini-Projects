@@ -1,0 +1,13 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+form {
+  width: 40%;
+  margin: 3rem auto;
+}
+input {
+  padding: 5px 10px;
+  width: 60%;
+}
